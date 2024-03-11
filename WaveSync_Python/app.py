@@ -16,12 +16,14 @@ def capture_and_enhance():
 
     while True:
         ret, frame = cap.read()
+        
         if not ret:
             break
 
         # Perform enhancement on the frame
         # Here, you can replace this with your enhancement techniques
-        blurred_frame = cv2.GaussianBlur(frame, (5, 5), 0)
+        # Adjust the parameters of the Gaussian blur filter for reducing blurriness
+        blurred_frame = cv2.GaussianBlur(frame, (3, 3),0)  # Adjust kernel size here
         enhanced_frame = cv2.convertScaleAbs(blurred_frame, alpha=1.5, beta=0)
             
         # Write the enhanced frame to the output video
@@ -32,18 +34,19 @@ def capture_and_enhance():
         img_data = img_encoded.tobytes()
 
         yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + img_data + b'\r\n')
+            b'Content-Type: image/jpeg\r\n\r\n' + img_data + b'\r\n')
 
     cap.release()
     out.release()
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html')    
 
 @app.route('/video_feed')
 def video_feed():
     return Response(capture_and_enhance(), mimetype='multipart/x-mixed-replace; boundary=frame')
+    print("successfully frame read")
 
 if __name__ == '__main__':
     app.run(debug=True)
