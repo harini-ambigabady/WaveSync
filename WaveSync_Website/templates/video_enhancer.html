@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>WaveSync Video Enhancer</title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="D:/PROJECTS/techgium/WaveSync_Website/css/bootstrap.css" />
+
+  <!-- font awesome style -->
+  <link href="D:/PROJECTS/techgium/WaveSync_Website/css/font-awesome.min.css" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="D:/PROJECTS/techgium/WaveSync_Website/css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="D:/PROJECTS/techgium/WaveSync_Website/css/responsive.css" rel="stylesheet" />
+
+</head>
+
+<body class="sub_page">
+
+  <div class="hero_area">
+    <!-- header section starts -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <span>
+              WaveSync
+            </span>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav  ">
+              <li class="nav-item ">
+                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html"> About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="service.html">Services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="features.html">Features</a>
+              </li>
+            </ul>
+            <div class="quote_btn-container">
+              <a href="LOGIN.html" class="quote_btn">
+                LOGIN
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+  <!-- video enhancer section -->
+  <section class="about_section layout_padding layout_margin">
+    <div class="container  ">
+      <div class="container">
+        <div class="heading_container">
+          <h2>
+            Video Enhancer
+          </h2>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <form id="video_form">
+              <div class="form-group">
+                <label for="video_file">Upload Video File:</label>
+                <input type="file" class="form-control-file" id="video_file">
+              </div>
+              <div class="form-group">
+                <label for="video_url">Or Enter URL of Live Video:</label>
+                <input type="url" class="form-control" id="video_url" placeholder="https://www.example.com/video">
+                
+              </div>
+              <row>
+                <form >
+                <video id="live-camera-feed" autoplay></video>
+  <a href="capture.html" id="start-camera-link">
+  <button type="button">Start Camera</button>
+  </a>
+  
+  <script>
+    const startCameraLink = document.getElementById('start-camera-link');
+    const videoElement = document.getElementById('live-camera-feed');
+
+    startCameraLink.addEventListener('click', async (event) => {
+      event.preventDefault(); // Prevent default anchor behavior (navigation)
+
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        videoElement.srcObject = stream;
+      } catch (error) {
+        console.error('Error accessing camera:', error);
+      }
+    });
+  </script>
+  </form>
+          <a href="">
+            <button type="button" class="btn btn-primary custom-btn" id="enhance-button" >Enhance</button>
+          </a>
+          <br><br>
+          
+
+  <script>
+      // Get the button element
+      const enhanceButton = document.getElementById('enhance-button');
+  
+      // Add click event listener
+      enhanceButton.addEventListener('click', function() {
+          // Redirect to the specified link in a new tab
+        window.open('http://127.0.0.1:5000', '_blank');
+      const video = document.getElementById('video_feed');
+
+    // Prompt user for permission to use the webcam.
+    // if (navigator.mediaDevices.getUserMedia) {
+    //     navigator.mediaDevices.getUserMedia({video: true})
+    //         .then(function (stream) {
+    //             video.srcObject = stream;
+    //         })
+    //         .catch(function (err0r) {
+    //             console.log("Something went wrong!");
+    //         });
+    // }
+      });
+  </script>
+
+  
+  <!-- <script>
+    const video = document.getElementById('video_feed');
+  
+    // Prompt user for permission to use the webcam.
+    if (navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(function (stream) {
+          video.srcObject = stream;
+        })
+        .catch(function (err0r) {
+          console.log("Something went wrong!");
+        });
+    }
+  </script> -->
+              </form>
+            <!--<button type="button" class="btn btn-secondary custom-btn" onclick="resetForm()">Reset</button>-->
+          </row>
+          </div>
+          <div class="col-md-6">
+            <div id="enhanced_video_container">
+              <!-- Enhanced video will be displayed here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end video enhancer section -->
+  <div class="footer_container">
+    <!-- info section -->
+
+    <section class="info_section ">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-lg-3 ">
+            <div class="info_detail">
+              <h4>
+                WaveSync
+              </h4>
+              <p>
+
+                Ditch the buffering blues! Stop noisy chaos and unreliable streams. Our smart solution analyzes live content, boosts quality, and recommends sweet-spot internet speeds. Immerse yourself, anywhere, anytime. ✨            </div>
+          </div>
+          <div class="col-md-6 col-lg-2 mx-auto">
+            <div class="info_link_box">
+              <h4>
+                Links
+              </h4>
+              <div class="info_links">
+                <a class="" href="index.html">
+                  Home
+                </a>
+                <a class="" href="about.html">
+                  About
+                </a>
+                <a class="" href="service.html">
+                  Services
+                </a>
+                <a class="" href="features.html">
+                  Features
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-6 col-lg-3 mb-0 ml-auto">
+            <div class="info_contact">
+              <h4>
+                Address
+              </h4>
+              <div class="contact_link_box">
+                <a href="">
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  <span>
+                    Location
+                  </span>
+                </a>
+                <a href="">
+                  <i class="fa fa-phone" aria-hidden="true"></i>
+                  <span>
+                    Call +01 1234567890
+                  </span>
+                </a>
+                <a href="">
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                  <span>
+                    demo@gmail.com
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div class="info_social">
+              <a href="">
+                <i class="fa fa-facebook" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="fa fa-linkedin" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- end info section -->
+
+
+  </div>
+
+
+  <!-- jQery -->
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <!-- popper js -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous">
+  </script>
+  <!-- bootstrap js -->
+  <script src="js/bootstrap.js"></script>
+  <!-- custom js -->
+  <script src="js/custom.js"></script>
+
+  <script>
+    // Function to enhance the video
+    function enhanceVideo() {
+      // Implement video enhancement logic here
+      // Display the enhanced video in #enhanced_video_container
+    }
+
+    // Function to reset the form
+    function resetForm() {
+      document.getElementById("video_form").reset();
+      document.getElementById("enhanced_video_container").innerHTML = "";
+    }
+  </script>
+</body>
+
+</html>
